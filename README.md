@@ -26,6 +26,12 @@ The app opens a centered screen with:
 
 The current interface is built in [ui/screens/disk_screen.py](/home/void/autoarch/ui/screens/disk_screen.py) and launched from [main.py](/home/void/autoarch/main.py).
 
+## 🪼 AutoArch Gallery
+
+`⋆˚꩜｡ a small showcase of the interface ｡✮⋆˙`
+
+![AutoArch Gallery](imgs/AutoArch_Installer_2026-04-11T00_44_38_582491.svg)
+
 ## 🫧 ⋆.ೃ࿔*:･ Stack
 
 - Python
