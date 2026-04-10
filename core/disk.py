@@ -7,7 +7,7 @@ def get_disks():
         text=True
         )
     lines=result.stdout.strip().split("\n")[1:]
-    disk=[]
+    disks=[]
 
     for line in lines:
         parts=line.split()
@@ -16,7 +16,7 @@ def get_disks():
             continue
         name,size,dtype=parts
         if dtype=="disk":
-            disks.appens({
+            disks.append({
                 "name":name,
                 "size":size,
                 "path":f"/dev/{name}"
