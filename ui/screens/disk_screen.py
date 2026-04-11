@@ -2,6 +2,8 @@ from textual.screen import Screen
 from textual.widgets import ListView, ListItem, Label, Header, Footer
 from textual.containers import Vertical
 from core.disk import get_disks
+from ui.screens.mode_screen import ModeScreen
+
 
 class DiskScreen(Screen):
 
@@ -54,6 +56,8 @@ class DiskScreen(Screen):
         for d in disks:
             text = f"{d['path']} ({d['size']})"
             items.append(ListItem(Label(text)))
+            items[-1].disk_path=d['path']
+
 
         yield Header(show_clock=False,icon="⋆˚꩜｡✮⋆˙",)
 
@@ -66,5 +70,5 @@ class DiskScreen(Screen):
     
 
     def on_list_view_selected(self, event):
-        selected = event.item.query_one(Label).renderable
-        self.app.exit(f"Selected: {selected}")
+        selected = event.item.disk_path
+        self.app.push_screen(ModeScreen(selected))
