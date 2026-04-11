@@ -39,3 +39,4 @@ class ModeScreen(Screen):
     def on_list_view_selected(self, event):
         choice = event.item.query_one(Label).renderable
         self.app.exit(f"{choice} selected on {self.disk}")
+        # test
