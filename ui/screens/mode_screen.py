@@ -16,7 +16,7 @@ class ModeScreen(Screen):
         padding: 1 2;
     }
         ListView {
-        height: 1fr;
+        height: 1fr; 
         border: solid orange;
     }
     """
@@ -39,4 +39,4 @@ class ModeScreen(Screen):
     def on_list_view_selected(self, event):
         choice = event.item.query_one(Label).renderable
         self.app.exit(f"{choice} selected on {self.disk}")
-        # test
+      
