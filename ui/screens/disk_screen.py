@@ -1,8 +1,22 @@
 from textual.screen import Screen
-from textual.widgets import ListView, ListItem, Label, Header, Footer
+from textual.widgets import ListView, ListItem, Label, Header
 from textual.containers import Vertical
 from core.disk import get_disks
 from ui.screens.mode_screen import ModeScreen
+
+ASCII_ART = r"""
+   ░███                  ░██                  ░███                        ░██        
+  ░██░██                 ░██                 ░██░██                       ░██        
+ ░██  ░██  ░██    ░██ ░████████  ░███████   ░██  ░██  ░██░████  ░███████  ░████████  
+░█████████ ░██    ░██    ░██    ░██    ░██ ░█████████ ░███     ░██    ░██ ░██    ░██ 
+░██    ░██ ░██    ░██    ░██    ░██    ░██ ░██    ░██ ░██      ░██        ░██    ░██ 
+░██    ░██ ░██   ░███    ░██    ░██    ░██ ░██    ░██ ░██      ░██    ░██ ░██    ░██ 
+░██    ░██  ░█████░██     ░████  ░███████  ░██    ░██ ░██       ░███████  ░██    ░██ 
+
+                                                                             By k4rt_c0b                                                                                   
+                                                                                     
+                                                                                     
+"""
 
 
 class DiskScreen(Screen):
@@ -11,7 +25,12 @@ class DiskScreen(Screen):
     Screen {
         align: center middle;
     }
-
+    #ascii_art{
+       
+        margin-bottom: 1;
+        color: orange;
+        text-style: bold;
+    }
     #container {
         width: 60%;
         height: 70%;
@@ -62,6 +81,7 @@ class DiskScreen(Screen):
         yield Header(show_clock=False,icon="⋆˚꩜｡✮⋆˙",)
 
         yield Vertical(
+            Label(ASCII_ART,id="ascii_art"),
             Label("[bold orange]Select Disk to Install Arch Linux [/bold orange]⋆˚꩜  ｡✮⋆˙", id="title"),
             ListView(*items,id="disk_view"),
             id="container"
