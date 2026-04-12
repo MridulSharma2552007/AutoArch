@@ -1,6 +1,7 @@
 from textual.screen import Screen
 from textual.widgets import Label,ListView,ListItem
 from textual.containers import Vertical
+from ui.screens.partition_screen import PartitionScreen
 
 class ModeScreen(Screen):
 
@@ -49,9 +50,9 @@ class ModeScreen(Screen):
      choice = getattr(event.item, "mode_key", None)
 
      if choice == "auto":
-        self.app.exit("Auto install selected")
+        self.app.push_screen(PartitionScreen(self.disk))
      elif choice == "manual":
-        self.app.exit("Manual install selected")
+        self.app.push_screen(PartitionScreen(self.disk))
      elif choice == "dual":
         self.app.exit("Dual boot selected")
      else:
