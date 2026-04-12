@@ -26,17 +26,33 @@ class ModeScreen(Screen):
         self.disk = disk
 
     def compose(self):
+        auto_item = ListItem(Label("Use entire disk (Auto)"))
+        auto_item.mode_key = "auto"
+
+        manual_item = ListItem(Label("Manual partitioning"))
+        manual_item.mode_key = "manual"
+
+        dual_item = ListItem(Label("Dual boot (use free space)"))
+        dual_item.mode_key = "dual"
+
         yield Vertical(
             Label(f"[bold orange]Disk:[/bold orange] {self.disk}"),
             Label("Select installation type:"),
             ListView(
-                ListItem(Label("Use entire disk (Auto)")),
-                ListItem(Label("Manual partitioning")),
-                ListItem(Label("Dual boot (use free space)")),
+                auto_item,
+                manual_item,
+                dual_item,
             )
             ,id="container"
         )
     def on_list_view_selected(self, event):
-        choice = event.item.query_one(Label).renderable
-        self.app.exit(f"{choice} selected on {self.disk}")
-      
+     choice = getattr(event.item, "mode_key", None)
+
+     if choice == "auto":
+        self.app.exit("Auto install selected")
+     elif choice == "manual":
+        self.app.exit("Manual install selected")
+     elif choice == "dual":
+        self.app.exit("Dual boot selected")
+     else:
+        self.app.exit("Unknown install Selected")
